@@ -135,7 +135,7 @@ var PlayLayer = cc.LayerColor.extend({
   update:function(dt){
     var now = cooldown.getPercentage();
 //    cc.log(now);
-    cooldown.setPercentage(now - 1.5);
+    cooldown.setPercentage(now - 1.2);
     if (now <= 0){
       this.loadGameOverLayer();
       this.unscheduleUpdate();
