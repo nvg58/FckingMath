@@ -2,6 +2,10 @@ var GameOverLayer = cc.LayerColor.extend({
   playscene:null,
   ctor: function () {
     this._super();
+    this.setKeyboardEnabled(true);
+    this.keyboardArrows = {
+      space : false
+    }
   },
   init: function () {
 //    this._super(cc.c4b(0, 0, 0, 180));
@@ -78,10 +82,21 @@ var GameOverLayer = cc.LayerColor.extend({
   removeStartScene:function(sender){
 //    sender.removeFromParent();
 
+  },
+  onKeyDown:function(key){
+    if (key == cc.KEY.space){
+      this.keyboardArrows.space = true;
+      this.onRestart();
+    }
+  },
+  onKeyUp:function(key){
+    if (key == cc.KEY.space){
+      this.keyboardArrows.space = false;
+    }
   }
 });
 
-var GameOverScene = cc.Scene.extend({
+var GameOvrScene = cc.Scene.extend({
   onEnter: function () {
     this._super();
     var layer = new GameOverLayer();

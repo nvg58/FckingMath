@@ -40,7 +40,7 @@
         appFiles:[
             'src/resource.js',
             'src/StartScene.js',
-            'src/GameOverLayer.js',
+            'src/GameOvrLayer.js',
             'src/PlayScene.js'//add your own files in order here
         ]
     };

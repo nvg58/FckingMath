@@ -3,6 +3,10 @@ var StartLayer = cc.LayerColor.extend({
   centerPos: null,
   ctor: function () {
     this._super();
+    this.setKeyboardEnabled(true);
+    this.keyboardArrows = {
+      space : false
+    }
   },
   init: function () {
     this._super();
@@ -46,6 +50,17 @@ var StartLayer = cc.LayerColor.extend({
   },
   onShowLB: function () {
 
+  },
+  onKeyDown:function(key){
+    if (key == cc.KEY.space){
+      this.keyboardArrows.space = true;
+      this.onPlay();
+    }
+  },
+  onKeyUp:function(key){
+    if (key == cc.KEY.space){
+      this.keyboardArrows.space = false;
+    }
   }
 });
 

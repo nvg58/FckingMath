@@ -85,7 +85,7 @@ var PlayLayer = cc.LayerColor.extend({
 //    cc.Director.getInstance().pause();
     cooldown.setPercentage(100);
     this.removeAllChildren();
-    var gameover = new GameOverScene();
+    var gameover = new GameOvrScene();
     gameover.setPosition(cc.p(0, screenSize.height));
     gameover.runAction(cc.MoveTo.create(0.1, cc.p(0, 0)));
     var child;
