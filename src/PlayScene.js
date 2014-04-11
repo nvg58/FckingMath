@@ -8,9 +8,16 @@ var PlayLayer = cc.LayerColor.extend({
   right: null,
   wrong: null,
   cooldown: null,
-  gameoverLayerLoaded:false,
+  gameoverLayerLoaded: false,
   ctor: function () {
     this._super();
+    this.setKeyboardEnabled(true);
+    this.keyboardArrows = {
+      left : false,
+      right : false,
+      up : false,
+      down : false
+    }
   },
   init: function () {
     this._super();
@@ -108,7 +115,7 @@ var PlayLayer = cc.LayerColor.extend({
     this.scheduleUpdate();
   },
   onRightTouch: function () {
-    if (first + second == res) {
+    if (!this.gameoverLayerLoaded && first + second == res) {
       score++;
       this.setup();
       this.passedSound();
@@ -117,7 +124,7 @@ var PlayLayer = cc.LayerColor.extend({
     }
   },
   onWrongTouch: function () {
-    if (first + second != res) {
+    if (!this.gameoverLayerLoaded && first + second != res) {
       score++;
       this.setup();
       this.passedSound();
@@ -139,6 +146,40 @@ var PlayLayer = cc.LayerColor.extend({
   },
   failSound:function(){
     cc.AudioEngine.getInstance().playEffect(e_fail);
+  },
+  onKeyUp:function(key){
+    switch (key) {
+      case 37:
+        this.keyboardArrows.left = false;
+        break;
+      case 38:
+        this.keyboardArrows.up = false;
+        break;
+      case 39:
+        this.keyboardArrows.right = false;
+        break;
+      case 40:
+        this.keyboardArrows.down = false;
+        break;
+    }
+  },
+  onKeyDown:function(key){
+    switch (key) {
+      case 37:
+        this.keyboardArrows.left = true;
+        this.onRightTouch();
+        break;
+      case 38:
+        this.keyboardArrows.up = false;
+        break;
+      case 39:
+        this.keyboardArrows.right = true;
+        this.onWrongTouch();
+        break;
+      case 40:
+        this.keyboardArrows.down = false;
+        break;
+    }
   }
 });
 
