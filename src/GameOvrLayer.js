@@ -29,15 +29,15 @@ var GameOverLayer = cc.LayerColor.extend({
     bestScore = score > bestScore ? score : bestScore;
     sys.localStorage.setItem("BestScore", bestScore);
 
-    var bestScoreLbn = cc.LabelTTF.create("0", f_lato, 25);
+    var bestScoreLbn = cc.LabelTTF.create("0", f_lato, 20);
     bestScoreLbn.setColor(cc.WHITE);
     bestScoreLbn.setString(bestScore);
-    bestScoreLbn.setPosition(cc.p(gameoverDlg.getContentSize().width / 2 + 10, gameoverDlg.getContentSize().height / 6.5));
+    bestScoreLbn.setPosition(cc.p(gameoverDlg.getContentSize().width / 2 + 17, gameoverDlg.getContentSize().height / 5));
 
-    var newScoreLbn = cc.LabelTTF.create("0", f_lato, 25);
+    var newScoreLbn = cc.LabelTTF.create("0", f_lato, 20);
     newScoreLbn.setColor(cc.WHITE);
     newScoreLbn.setString(score);
-    newScoreLbn.setPosition(cc.p(gameoverDlg.getContentSize().width / 2 + 10, gameoverDlg.getContentSize().height / 2.4));
+    newScoreLbn.setPosition(cc.p(gameoverDlg.getContentSize().width / 2 + 10, gameoverDlg.getContentSize().height / 2.5));
 
     gameoverDlg.addChild(bestScoreLbn);
     gameoverDlg.addChild(newScoreLbn);
@@ -45,7 +45,7 @@ var GameOverLayer = cc.LayerColor.extend({
 
     var menu = cc.Menu.create(menuItemRestart, menuItemToStartScene);
     var offsetY = gameoverDlg.getContentSize().height / 2;
-    var offsetX = gameoverDlg.getContentSize().width / 4;
+    var offsetX = gameoverDlg.getContentSize().width / 3;
     menuItemRestart.setPosition(cc.p(screenSize.width / 2 - offsetX, screenSize.height / 2 - offsetY));
     menuItemToStartScene.setPosition(cc.p(screenSize.width / 2 + offsetX, screenSize.height / 2 - offsetY));
     menu.setPosition(cc.p(0, 0));
