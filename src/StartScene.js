@@ -14,7 +14,7 @@ var StartLayer = cc.LayerColor.extend({
     screenSize = cc.Director.getInstance().getWinSize();
     centerPos = cc.p(screenSize.width / 2, screenSize.height / 2);
 
-    var logo = cc.LabelTTF.create("FCKING MATH", "Helvetica", 70);
+    var logo = cc.LabelTTF.create("FCKING MATH", f_lato, 70);
     logo.setColor(cc.WHITE);
     logo.setPosition(cc.p(screenSize.width/2,  screenSize.height - 200));
     this.addChild(logo);

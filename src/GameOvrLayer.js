@@ -22,6 +22,7 @@ var GameOverLayer = cc.LayerColor.extend({
 
     var gameoverDlg = cc.Sprite.create(s_gameover);
     gameoverDlg.setPosition(cc.p(screenSize.width / 2, screenSize.height / 1.5));
+//    gameoverDlg.setScaleY(1.5);
 
 //    var defaults = sys.localStorage.getInstance();
     var bestScore = sys.localStorage.getItem("BestScore");
@@ -43,10 +44,10 @@ var GameOverLayer = cc.LayerColor.extend({
     this.addChild(gameoverDlg);
 
     var menu = cc.Menu.create(menuItemRestart, menuItemToStartScene);
-    var offsetY = gameoverDlg.getContentSize().height;
+    var offsetY = gameoverDlg.getContentSize().height / 2;
     var offsetX = gameoverDlg.getContentSize().width / 4;
     menuItemRestart.setPosition(cc.p(screenSize.width / 2 - offsetX, screenSize.height / 2 - 0 * offsetY));
-    menuItemToStartScene.setPosition(cc.p(screenSize.width / 2 + offsetX, screenSize.height / 2 - 0 * offsetY));
+    menuItemToStartScene.setPosition(cc.p(screenSize.width / 2 + offsetX, screenSize.height / 2 - 0* offsetY));
     menu.setPosition(cc.p(0, 0));
     this.addChild(menu);
   },
