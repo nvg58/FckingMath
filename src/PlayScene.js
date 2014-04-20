@@ -103,11 +103,22 @@ var PlayLayer = cc.LayerColor.extend({
 
 
     var delta = [-5, -4, -3, -2, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5];
-    first = Math.floor(Math.random() * delta.length + 1);
-    second = Math.floor(Math.random() * delta.length + 1);
-    res = first + second + delta[Math.floor(Math.random() * delta.length)];
 
-    statement.setString(first + " + " + second + "\n = " + res);
+    var range = (mode == PLUS) ? delta.length : delta.length/2;
+
+    first = Math.floor(Math.random() * range + 1);
+    second = Math.floor(Math.random() * range + 1);
+    var sign;
+    if (mode == PLUS) {
+      res = first + second;
+      sign = " + ";
+    } else {
+      res = first * second;
+      sign = " x "
+    }
+    res += delta[Math.floor(Math.random() * range)];
+
+    statement.setString(first + sign + second + "\n = " + res);
     scorelbn.setString(score);
 
     cooldown.setPercentage(100);
@@ -115,16 +126,20 @@ var PlayLayer = cc.LayerColor.extend({
     this.scheduleUpdate();
   },
   onRightTouch: function () {
-    if (!this.gameoverLayerLoaded && first + second == res) {
-      score++;
-      this.setup();
-      this.passedSound();
+    if (!this.gameoverLayerLoaded)
+      if ((mode == PLUS && first + second == res) ||
+          (mode == MULTI && first * second == res)) {
+        score++;
+        this.setup();
+        this.passedSound();
     } else {
       this.loadGameOverLayer();
     }
   },
   onWrongTouch: function () {
-    if (!this.gameoverLayerLoaded && first + second != res) {
+    if (!this.gameoverLayerLoaded)
+      if ((mode == PLUS && first + second != res) ||
+          (mode == MULTI && first * second != res)) {
       score++;
       this.setup();
       this.passedSound();
@@ -133,9 +148,10 @@ var PlayLayer = cc.LayerColor.extend({
     }
   },
   update:function(dt){
+    dt = 1.6;
     var now = cooldown.getPercentage();
 //    cc.log(now);
-    cooldown.setPercentage(now - 1.2);
+    cooldown.setPercentage(now - dt);
     if (now <= 0){
       this.loadGameOverLayer();
       this.unscheduleUpdate();

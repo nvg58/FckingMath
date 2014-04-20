@@ -3,10 +3,10 @@ var s_CloseNormal = "CloseNormal.png";
 var s_CloseSelected = "CloseSelected.png";
 var s_start_n = "start_n.png";
 var s_start_s = "start_s.png";
-var s_rate_n = "rate_n.png";
-var s_rate_s = "rate_s.png";
-var s_leaderboard_n = "leaderboard_n.png";
-var s_leaderboard_s = "leaderboard_S.png";
+var s_plus_n = "plus_n.png";
+var s_plus_s = "plus_s.png";
+var s_multi_n = "multi_n.png";
+var s_multi_s = "multi_s.png";
 var s_restart_n = "restart_n.png";
 var s_restart_s = "restart_s.png";
 var s_to_start_n = "to_start_n.png";
@@ -26,6 +26,9 @@ var e_reload = "res/reload.mp3";
 var TAG_PLAY_SCENE = 10;
 var TAG_GAME_OVER = 11;
 var TAG_START_SCENE = 12;
+var mode; 
+var PLUS = 0;
+var MULTI = 1;
 
 var g_resources = [
   //image
@@ -34,10 +37,10 @@ var g_resources = [
   {src: s_CloseSelected},
   {src: s_start_n},
   {src: s_start_s},
-  {src: s_rate_n},
-  {src: s_rate_s},
-  {src: s_leaderboard_n},
-  {src: s_leaderboard_s},
+  {src: s_plus_n},
+  {src: s_plus_s},
+  {src: s_multi_n},
+  {src: s_multi_s},
   {src: s_restart_n},
   {src: s_restart_s},
   {src: s_to_start_s},

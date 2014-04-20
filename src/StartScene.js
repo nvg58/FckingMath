@@ -23,33 +23,36 @@ var StartLayer = cc.LayerColor.extend({
       cc.Sprite.create(s_start_n),
       cc.Sprite.create(s_start_s),
       this.onPlay, this);
-    var rate = cc.MenuItemSprite.create(
-      cc.Sprite.create(s_rate_n),
-      cc.Sprite.create(s_rate_s),
-      this.onRate, this);
-    var leaderboard = cc.MenuItemSprite.create(
-      cc.Sprite.create(s_leaderboard_n),
-      cc.Sprite.create(s_leaderboard_s),
-      this.onShowLB, this);
+    var plus = cc.MenuItemSprite.create(
+      cc.Sprite.create(s_plus_n),
+      cc.Sprite.create(s_plus_s),
+      this.onPLus, this);
+    var multi = cc.MenuItemSprite.create(
+      cc.Sprite.create(s_multi_n),
+      cc.Sprite.create(s_multi_s),
+      this.onMulti, this);
 
     var offsetY = startBtn.getContentSize().height + 20;
     var offsetX = startBtn.getContentSize().width / 2 + 40;
     startBtn.setPosition(centerPos);
-    rate.setPosition(cc.p(screenSize.width / 2 - offsetX, screenSize.height / 2 - offsetY));
-    leaderboard.setPosition(cc.p(screenSize.width / 2 + offsetX, screenSize.height / 2 - offsetY));
-    var menu = cc.Menu.create(startBtn, rate, leaderboard);
+    plus.setPosition(cc.p(screenSize.width / 2 - offsetX, screenSize.height / 2 - offsetY));
+    multi.setPosition(cc.p(screenSize.width / 2 + offsetX, screenSize.height / 2 - offsetY));
+    var menu = cc.Menu.create(startBtn, plus, multi);
     menu.setPosition(cc.p(0, 0));
     this.addChild(menu);
   },
   onPlay: function () {
-    cc.log("start clicked");
+    mode = Math.floor(Math.random());
+    cc.log(mode);
     cc.Director.getInstance().replaceScene(cc.TransitionMoveInT.create(0.2, new PlayScene()));
   },
-  onRate: function () {
-
+  onPLus: function () {
+    mode = PLUS;
+    cc.Director.getInstance().replaceScene(cc.TransitionMoveInT.create(0.2, new PlayScene()));
   },
-  onShowLB: function () {
-
+  onMulti: function () {
+    mode = MULTI;
+    cc.Director.getInstance().replaceScene(cc.TransitionMoveInT.create(0.2, new PlayScene()));
   },
   onKeyDown:function(key){
     if (key == cc.KEY.space){
