@@ -1,13 +1,13 @@
 var GameOverLayer = cc.LayerColor.extend({
   playscene:null,
-  ctor: function () {
+  ctor:function () {
     this._super();
     this.setKeyboardEnabled(true);
     this.keyboardArrows = {
       space : false
     }
   },
-  init: function () {
+  init:function () {
 //    this._super(cc.c4b(0, 0, 0, 180));
     this._super(cc.c3b(0, 0, 0));
     var offset = 18.0;

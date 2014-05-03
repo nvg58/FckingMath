@@ -36,13 +36,13 @@
         renderMode:0,       //Choose of RenderMode: 0(default), 1(Canvas only), 2(WebGL only)
         tag:'gameCanvas', //the dom element to run cocos2d on
         engineDir:'cocos2d/',
-        //SingleEngineFile:'',
-        appFiles:[
+        SingleEngineFile:'myTemplate.js',
+        /*appFiles:[
             'src/resource.js',
             'src/StartScene.js',
             'src/GameOvrLayer.js',
             'src/PlayScene.js'//add your own files in order here
-        ]
+        ]*/
     };
 
     if(!d.createElement('canvas').getContext){
@@ -72,11 +72,11 @@
             s.src = c.engineDir + 'jsloader.js';
         }
         else {
-            alert('You must specify either the single engine file OR the engine directory in "cocos2d.js"');
+            // alert('You must specify either the single engine file OR the engine directory in "cocos2d.js"');
         }
         /*********Delete this section if you have packed all files into one*******/
 
-            //s.src = 'myTemplate.js'; //IMPORTANT: Un-comment this line if you have packed all files into one
+            s.src = 'myTemplate.js'; //IMPORTANT: Un-comment this line if you have packed all files into one
 
         d.body.appendChild(s);
         document.ccConfig = c;
